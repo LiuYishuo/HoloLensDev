@@ -7,7 +7,7 @@
 # Default behavior is to never overwrite files
 BrickBuilder.sln: modified
 BrickBuilder\App.cs: 1D2CC8C217FF64DA37F2FB3F15B713B0
-BrickBuilder\BrickBuilder.csproj: E0F065E3A57D4C835DC016E353D1BABC
+BrickBuilder\BrickBuilder.csproj: EF5BC3C812C0E154E0E50F7512240614
 BrickBuilder\BrickBuilder.csproj.user: modified
 BrickBuilder\Package.appxmanifest: modified
 BrickBuilder\project.json: 1D02BC64BAC0D041019673A1C4C51737

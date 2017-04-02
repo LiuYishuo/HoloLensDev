@@ -23,7 +23,9 @@ public class Manipulator : Singleton<Manipulator> {
 
     // Goal
     [Tooltip("Target Finish")]
-    public GameObject targetFinish;
+    private static int Stages = 6;
+    public GameObject[] targetFinish = new GameObject[Stages];
+    private int currentStage;
 
     // Assembly
     public GameObject Assembly;
@@ -53,6 +55,10 @@ public class Manipulator : Singleton<Manipulator> {
         tappedHandle = null;
         handlers.SetActive(false);
 
+        // Stage targets
+        //targetFinish = new GameObject[Stages];
+        currentStage = 1;
+
         consoleText = consolePanel.GetComponentInChildren<Text>();
     }
 
@@ -62,6 +68,49 @@ public class Manipulator : Singleton<Manipulator> {
     }
 
     public void Update () {
+        // Set Stage
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            currentStage = 1;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            currentStage = 2;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            currentStage = 3;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            currentStage = 4;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            currentStage = 5;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            currentStage = 6;
+        }
+
+        // Keyboard Override
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            AddBrick_K();
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            DeleteBrick_K();
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ResetAssembly_K();
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            ShowHint_K();
+        }
         // DEBUG ONLY!!!
         string buffer;
         consoleText.text = " GazeManager >> ";
@@ -104,8 +153,29 @@ public class Manipulator : Singleton<Manipulator> {
         handlers.SetActive(true);
         tappedBrick = newBrick;
     }
+    private void AddBrick_K()
+    {
+        brickCounter = GameObject.FindGameObjectsWithTag("brick").Length;
+        GameObject newBrick = (GameObject)Instantiate(brick, GazeManager.Instance.Position, Quaternion.identity);
+        newBrick.name = "Brick_" + brickCounter.ToString();
+        // Move and SetActive handlers to current brick
+        handlers.transform.position = newBrick.transform.position;
+        handlers.transform.rotation = newBrick.transform.rotation;
+        handlers.SetActive(true);
+        tappedBrick = newBrick;
+    }
 
     private void DeleteBrick(PhraseRecognizedEventArgs args)
+    {
+        if (tappedBrick == null || tappedBrick.tag == "assembly")    // must have a brick selected; assembly (container) can't be deleted
+        {
+            return;
+        }
+
+        tappedBrick.SetActive(false);
+        handlers.SetActive(false);
+    }
+    private void DeleteBrick_K()
     {
         if (tappedBrick == null || tappedBrick.tag == "assembly")    // must have a brick selected; assembly (container) can't be deleted
         {
@@ -119,17 +189,34 @@ public class Manipulator : Singleton<Manipulator> {
     // Show hint of the target
     private void ShowHint(PhraseRecognizedEventArgs args)
     {
-        targetFinish.SetActive(true);
+        targetFinish[currentStage - 1].SetActive(true);
+        targetFinish[currentStage - 1].transform.position = Camera.main.transform.position + Camera.main.transform.forward * 1.5f + Camera.main.transform.up * 0.2f;
         // Move and SetActive handlers to current brick
-        handlers.transform.position = targetFinish.transform.position;
-        handlers.transform.rotation = targetFinish.transform.rotation;
+        handlers.transform.position = targetFinish[currentStage - 1].transform.position;
+        handlers.transform.rotation = targetFinish[currentStage - 1].transform.rotation;
         handlers.SetActive(true);
-        tappedBrick = targetFinish;
+        tappedBrick = targetFinish[currentStage-1];
+    }
+    private void ShowHint_K()
+    {
+        targetFinish[currentStage - 1].SetActive(true);
+        targetFinish[currentStage - 1].transform.position = Camera.main.transform.position + Camera.main.transform.forward * 1.5f + Camera.main.transform.up * 0.2f;
+        // Move and SetActive handlers to current brick
+        handlers.transform.position = targetFinish[currentStage - 1].transform.position;
+        handlers.transform.rotation = targetFinish[currentStage - 1].transform.rotation;
+        handlers.SetActive(true);
+        tappedBrick = targetFinish[currentStage - 1];
     }
     // Dismiss hint
     private void DismissHint(PhraseRecognizedEventArgs args)
     {
-        targetFinish.SetActive(false);
+        targetFinish[currentStage - 1].SetActive(false);
+        tappedBrick.SetActive(false);
+        handlers.SetActive(false);
+    }
+    private void DismissHint_K()
+    {
+        targetFinish[currentStage - 1].SetActive(false);
         tappedBrick.SetActive(false);
         handlers.SetActive(false);
     }
@@ -141,6 +228,10 @@ public class Manipulator : Singleton<Manipulator> {
 
     // Destroy all clone bricks in Assembly
     private void ResetAssembly(PhraseRecognizedEventArgs args)
+    {
+        Assembly.SendMessageUpwards("Reset");
+    }
+    private void ResetAssembly_K()
     {
         Assembly.SendMessageUpwards("Reset");
     }

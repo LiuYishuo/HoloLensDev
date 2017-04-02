@@ -67,5 +67,6 @@ public class AssembleSubstitute : MonoBehaviour {
             Destroy(clone);
         }
         assembles.Clear();
+        transform.position = Camera.main.transform.position - Camera.main.transform.up;
     }
 }
