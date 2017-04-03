@@ -1,0 +1,9 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <UnityWSASolutionName>ARComputing</UnityWSASolutionName>
+        <UnityWSASolutionDir>C:\Users\LiuYishuo\Documents\GitHub\HoloLensDev\ARComputing\App\</UnityWSASolutionDir>
+        <UnityProjectDir>C:\Users\LiuYishuo\Documents\GitHub\HoloLensDev\ARComputing\</UnityProjectDir>
+        <UnityWSAPlayerDir>C:\Program Files\Unity\Editor\Data\PlaybackEngines\MetroSupport\</UnityWSAPlayerDir>
+        <UnityWSAToolsDir>$(UnityWSASolutionDir)Unity\Tools\</UnityWSAToolsDir>
+    </PropertyGroup>
+</Project>
