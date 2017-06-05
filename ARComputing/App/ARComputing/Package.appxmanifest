@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:uap2="http://schemas.microsoft.com/appx/manifest/uap/windows10/2" IgnorableNamespaces="uap uap2 mp" xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10">
-  <Identity Name="ARComputing" Publisher="CN=DefaultCompany" Version="1.0.0.0" />
+  <Identity Name="ARComputing" Publisher="CN=LiuYishuo" Version="1.0.0.0" />
   <mp:PhoneIdentity PhoneProductId="4393f680-eb73-454d-bbd6-8aae64d6b2dd" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>ARComputing</DisplayName>

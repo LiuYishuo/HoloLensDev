@@ -7,7 +7,7 @@
 # Default behavior is to never overwrite files
 ARComputing.sln: modified
 ARComputing\App.cs: C3000537749AD39D500A73CF5A97C547
-ARComputing\ARComputing.csproj: A824DACF4909A1A6FA114865ED88F376
+ARComputing\ARComputing.csproj: B1C74BD203B486B29815EAB4330E708E
 ARComputing\ARComputing.csproj.user: modified
 ARComputing\Package.appxmanifest: modified
 ARComputing\project.json: 1D02BC64BAC0D041019673A1C4C51737
