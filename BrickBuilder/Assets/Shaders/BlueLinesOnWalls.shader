@@ -1,4 +1,6 @@
-﻿Shader "Custom/BlueLinesOnWalls"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/BlueLinesOnWalls"
 {
 	Properties
 	{
@@ -38,7 +40,7 @@
 				VertToFrag o;
 
 				// Calculate where the vertex is in view space.
-				o.viewPos = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.viewPos = UnityObjectToClipPos(v.vertex);
 
 				// Calculate the normal in WorldSpace.
 				o.normal = UnityObjectToWorldNormal(v.normal);
