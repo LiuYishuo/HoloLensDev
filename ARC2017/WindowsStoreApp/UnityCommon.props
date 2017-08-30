@@ -1,0 +1,9 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <UnityWSASolutionName>ARC2017</UnityWSASolutionName>
+        <UnityWSASolutionDir>C:\Users\Yishuo\Documents\GitHub\HoloLensDev\ARC2017\WindowsStoreApp\</UnityWSASolutionDir>
+        <UnityProjectDir>C:\Users\Yishuo\Documents\GitHub\HoloLensDev\ARC2017\</UnityProjectDir>
+        <UnityWSAPlayerDir>C:\Program Files\Unity2017\Editor\Data\PlaybackEngines\MetroSupport\</UnityWSAPlayerDir>
+        <UnityWSAToolsDir>$(UnityWSASolutionDir)Unity\Tools\</UnityWSAToolsDir>
+    </PropertyGroup>
+</Project>
